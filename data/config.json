@@ -1,6 +1,6 @@
 {
   "EXPORT_TIME_INTERVAL": {
-    "value": 3600,
+    "value": 36000,
     "desc": "需要导出订单的时间间隔,例如47-48小时，单位秒"
   },
   "EXPORT_TIME_OFFSET": {
@@ -43,5 +43,25 @@
   "IS_AUTO_EXPORT": {
     "value": "1",
     "desc": "是否自动导出数量缺失的订单链接,1表示是，0表示否"
+  },
+  "OWLPROXY_KEY_ID": {
+    "value": "AeUhdPBCsl8601zOqVIHk2HqaiYyA6G3",
+    "desc": "OwlProxy的Key ID"
+  },
+  "OWLPROXY_KEY_SECRET": {
+    "value": "o6q8ak39vPBljGWghOgVq6rX",
+    "desc": "OwlProxy的Key Secret"
+  },
+  "OWLPROXY_COUNTRY": {
+    "value": "JP",
+    "desc": "OwlProxy动态代理的国家代码"
+  },
+  "OWLPROXY_LIFETIME": {
+    "value": 5,
+    "desc": "OwlProxy动态代理的生命周期，单位分钟"
+  },
+  "IO_WORKERS_NUM": {
+    "value": 10,
+    "desc": "并发工作协程数"
   }
 }

@@ -56,7 +56,7 @@ class Config:
         self._data = initial or {}
 
     # ---- dict 接口 ----
-    def __getitem__(self, key):
+    def __getitem__(self, key) -> str|int|list|dict:
         """直接返回对应 key 下的 value 字段。"""
         with self._lock:
             item = self._data[key]
