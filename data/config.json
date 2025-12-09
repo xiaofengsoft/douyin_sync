@@ -1,0 +1,47 @@
+{
+  "EXPORT_TIME_INTERVAL": {
+    "value": 3600,
+    "desc": "需要导出订单的时间间隔,例如47-48小时，单位秒"
+  },
+  "EXPORT_TIME_OFFSET": {
+    "value": 172800,
+    "desc": "从当前时间往前推多少小时开始，例如两天就是48小时"
+  },
+  "DB_HOST": {
+    "value": "104.233.187.93",
+    "desc": "数据库主机地址"
+  },
+  "DB_PORT": {
+    "value": 3306,
+    "desc": "数据库端口"
+  },
+  "DB_USER": {
+    "value": "zhangyifeng",
+    "desc": "数据库用户名"
+  },
+  "DB_PASSWORD": {
+    "value": "Zyf15682828516",
+    "desc": "数据库密码"
+  },
+  "DB_NAME": {
+    "value": "shujuwo",
+    "desc": "数据库名称"
+  },
+  "MONITORED_GOOD_IDS": {
+    "value": [
+      3509,
+      3506,
+      3488,
+      3906
+    ],
+    "desc": "需要配置的商品ID列表"
+  },
+  "TIKHUB_API_KEY": {
+    "value": "o7EcApka9QbxqjCZIqTJnUnoBGrUZZlmwkjcg27FZ8SovFqzOk2MdTu0Nw==",
+    "desc": "TIKHUB的API Key"
+  },
+  "IS_AUTO_EXPORT": {
+    "value": "1",
+    "desc": "是否自动导出数量缺失的订单链接,1表示是，0表示否"
+  }
+}
