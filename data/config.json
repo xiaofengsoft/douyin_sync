@@ -1,6 +1,6 @@
 {
   "EXPORT_TIME_INTERVAL": {
-    "value": 36000,
+    "value": 3600,
     "desc": "需要导出订单的时间间隔,例如47-48小时，单位秒"
   },
   "EXPORT_TIME_OFFSET": {
@@ -8,7 +8,7 @@
     "desc": "从当前时间往前推多少小时开始，例如两天就是48小时"
   },
   "DB_HOST": {
-    "value": "104.233.187.93",
+    "value": "154.36.180.12",
     "desc": "数据库主机地址"
   },
   "DB_PORT": {
@@ -16,11 +16,11 @@
     "desc": "数据库端口"
   },
   "DB_USER": {
-    "value": "zhangyifeng",
+    "value": "jibada666",
     "desc": "数据库用户名"
   },
   "DB_PASSWORD": {
-    "value": "Zyf15682828516",
+    "value": "jibada666...",
     "desc": "数据库密码"
   },
   "DB_NAME": {
@@ -29,27 +29,24 @@
   },
   "MONITORED_GOOD_IDS": {
     "value": [
-      3509,
-      3506,
-      3488,
-      3906
+      861,
+      1013,
+      860,
+      16,
+      1012
     ],
     "desc": "需要配置的商品ID列表"
   },
-  "TIKHUB_API_KEY": {
-    "value": "o7EcApka9QbxqjCZIqTJnUnoBGrUZZlmwkjcg27FZ8SovFqzOk2MdTu0Nw==",
-    "desc": "TIKHUB的API Key"
-  },
   "IS_AUTO_EXPORT": {
-    "value": "1",
+    "value": "0",
     "desc": "是否自动导出数量缺失的订单链接,1表示是，0表示否"
   },
   "OWLPROXY_KEY_ID": {
-    "value": "AeUhdPBCsl8601zOqVIHk2HqaiYyA6G3",
+    "value": "JKUZ9qAg1aWrVfnkxaMcxL9J9vxtoOga",
     "desc": "OwlProxy的Key ID"
   },
   "OWLPROXY_KEY_SECRET": {
-    "value": "o6q8ak39vPBljGWghOgVq6rX",
+    "value": "2yG6suERpZI57hA9ShCzeQc8",
     "desc": "OwlProxy的Key Secret"
   },
   "OWLPROXY_COUNTRY": {
@@ -61,7 +58,7 @@
     "desc": "OwlProxy动态代理的生命周期，单位分钟"
   },
   "IO_WORKERS_NUM": {
-    "value": 10,
+    "value": 100,
     "desc": "并发工作协程数"
   }
 }

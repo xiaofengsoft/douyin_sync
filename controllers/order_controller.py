@@ -34,8 +34,8 @@ def query_finished_orders_for_monitor() -> List[Dict[str, Any]]:
     export_time_interval = int(CONFIG["EXPORT_TIME_INTERVAL"])
     monitored_ids = CONFIG["MONITORED_GOOD_IDS"] or []
 
-    end_ts = now - export_time_offset
-    start_ts = end_ts - export_time_interval
+    start_ts = now - export_time_offset
+    end_ts = start_ts + export_time_interval
 
     if not monitored_ids:
         return []

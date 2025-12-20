@@ -26,8 +26,8 @@ def show_order_page():
     export_time_offset = int(CONFIG["EXPORT_TIME_OFFSET"])
     export_time_interval = int(CONFIG["EXPORT_TIME_INTERVAL"])
 
-    end_ts = now - export_time_offset
-    start_ts = end_ts - export_time_interval
+    start_ts = now - export_time_offset
+    end_ts = start_ts + export_time_interval
     time_range_str = f"{_format_ts(start_ts)} ~ {_format_ts(end_ts)}"
 
     with ui.row().classes("items-center justify-between px-4 py-2"):
