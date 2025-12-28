@@ -3,13 +3,14 @@ from __future__ import annotations
 from typing import List, Dict
 import os
 import datetime as dt
+import csv  # 新增：CSV 读取
 
 from config import EXPORT_DIR
 
 
 def list_export_files() -> List[Dict]:
     """
-    列出导出目录下的文件：
+    列出导出目录下的 CSV 文件：
     返回 [{name, path, size, mtime}]，按时间倒序。
     """
     os.makedirs(EXPORT_DIR, exist_ok=True)
@@ -17,6 +18,9 @@ def list_export_files() -> List[Dict]:
     for name in os.listdir(EXPORT_DIR):
         path = os.path.join(EXPORT_DIR, name)
         if not os.path.isfile(path):
+            continue
+        # 仅保留 .csv
+        if not name.lower().endswith(".csv"):
             continue
         stat = os.stat(path)
         files.append(
@@ -62,3 +66,22 @@ def delete_all_files() -> int:
         os.remove(f["path"])
         count += 1
     return count
+
+
+def read_csv_table(path: str) -> Dict[str, List]:
+    """
+    读取 CSV 文件为表格数据：
+    返回 {"headers": List[str], "rows": List[Dict[str, str]]}
+    """
+    abs_export = os.path.abspath(EXPORT_DIR)
+    abs_path = os.path.abspath(path)
+    if not abs_path.startswith(abs_export):
+        raise ValueError("非法文件路径")
+    if not abs_path.lower().endswith(".csv"):
+        raise ValueError("仅支持 CSV 文件")
+
+    with open(abs_path, "r", encoding="utf-8-sig", newline="") as f:
+        reader = csv.DictReader(f)
+        headers = reader.fieldnames or []
+        rows = [dict(r) for r in reader]
+    return {"headers": headers, "rows": rows}
