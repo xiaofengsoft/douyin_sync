@@ -68,6 +68,7 @@ def query_finished_orders_for_monitor() -> List[Dict[str, Any]]:
                 "goods_id": o.goods_id,
                 "goods_name": o.goods_name,
                 "link": link,
+                "s_name": o.s_name,
                 "order_num": o.order_num,
                 "order_amount": str(o.order_amount),
                 "order_num": o.order_num,
@@ -83,39 +84,39 @@ def query_finished_orders_for_monitor() -> List[Dict[str, Any]]:
 
 async def export_deficiency_orders_links():
     """
-    导出所有数量缺失的订单
+    导出所有数量缺失的订单，按 goods_name 分文件导出：
+    {EXPORT_DIR}/{current_time_str}_{goods_name}.txt
     """
+    def _sanitize_filename(name: str) -> str:
+        # 仅保留中英文、数字、下划线和连字符，其余替换为下划线
+        return re.sub(r'[^0-9A-Za-z\u4e00-\u9fff_-]+', '_', name).strip('_') or 'unknown'
+
     orders = query_finished_orders_for_monitor()
     current_real_nums = await batch_aweme_likes(orders)
-    deficiency_links = []
+    deficiency_links_by_goods: Dict[str, List[str]] = {}
+
     for i in range(len(orders)):
         orders[i]["current_num"] = current_real_nums[i]
-        # 如果数量缺失，打印链接
+        # 如果数量缺失，按 goods_name 分组记录链接
         if orders[i]["current_num"] - orders[i]["start_num"] < orders[i]["order_num"]:
+            goods_name = orders[i]["goods_name"] or "unknown"
             deficiency_link = orders[i]["link"]
             deficiency_num = orders[i]["order_num"] - (
                 orders[i]["current_num"] - orders[i]["start_num"]
             )
-            deficiency_links.append(deficiency_link)
+            deficiency_links_by_goods.setdefault(goods_name, []).append(deficiency_link)
             logging.info(f"数量缺失：{deficiency_link} 缺失 {deficiency_num} 个")
+
     current_time_str = time.strftime("%Y-%m-%d_%H-%M-%S", time.localtime())
-    with open(f"{EXPORT_DIR}/{current_time_str}.txt", "w", encoding="utf-8") as f:
-        for link in deficiency_links:
-            f.write(link + "\n")
+    for goods_name, links in deficiency_links_by_goods.items():
+        safe_name = _sanitize_filename(goods_name)
+        file_path = f"{EXPORT_DIR}/{current_time_str}_{safe_name}.txt"
+        with open(file_path, "w", encoding="utf-8") as f:
+            for link in links:
+                f.write(link + "\n")
+    # 把分组记录的链接返回
+    return deficiency_links_by_goods
 
 
-def auto_export_deficiency_orders_links():
-    """
-    如果配置开启自动导出功能，则自动导出数量缺失的订单链接
-    """
 
-    async def _runner():
-        while True:
-            if CONFIG["IS_AUTO_EXPORT"] == "1":
-                await export_deficiency_orders_links()
-                interval = int(CONFIG["EXPORT_TIME_INTERVAL"])  # type: ignore
-            else:
-                interval = 60
-            await asyncio.sleep(interval)  # type: ignore
 
-    threading.Thread(target=lambda: asyncio.run(_runner()), daemon=True).start()

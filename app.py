@@ -3,7 +3,7 @@ from views.config_view import show_config_page
 from views.order_view import show_order_page
 from views.log_view import show_log_page
 from views.file_view import show_file_page
-from controllers.order_controller import auto_export_deficiency_orders_links
+from tasks.refund_task import auto_export_deficiency_orders_links
 
 
 @app.on_startup

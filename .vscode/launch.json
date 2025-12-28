@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Run Current Unit Test",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}", // 关键：设置工作目录为项目根目录
+      "env": {},
+      "justMyCode": false
+    }
+  ]
+}

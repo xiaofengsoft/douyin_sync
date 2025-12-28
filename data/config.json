@@ -38,7 +38,7 @@
     "desc": "需要配置的商品ID列表"
   },
   "IS_AUTO_EXPORT": {
-    "value": "0",
+    "value": "1",
     "desc": "是否自动导出数量缺失的订单链接,1表示是，0表示否"
   },
   "OWLPROXY_KEY_ID": {
@@ -60,5 +60,31 @@
   "IO_WORKERS_NUM": {
     "value": 100,
     "desc": "并发工作协程数"
+  },
+  "YUNMA_TOKEN": {
+    "value": "LoNDl5a2zabo-fHO5_Rjv38Y_dCS_4MTz_8_2bIYDcU",
+    "desc": "云码API的Token"
+  },
+  "NINGMENG_USERNAME": {
+    "value": "asd798",
+    "desc": "柠檬平台用户名"
+  },
+  "NINGMENG_PASSWORD": {
+    "value": "SAsaf31412@",
+    "desc": "柠檬平台密码"
+  },
+  "NINGMENG_ENCRYPTION_KEY": {
+    "value": "GA9NuMZq2CiKcZj32R/Z8w==",
+    "desc": "柠檬平台密码加密密钥"
+  },
+  "NINGMENG_ENCRYPTION_IV": {
+    "value": "268d6a4a382ef9d2af7a0e164e5eff35",
+    "desc": "柠檬平台密码加密向量"
+  },
+  "NINGMENG_GOODS_NAMES": {
+    "value": [
+      "DY小单视频赞【秒】"
+    ],
+    "desc": "柠檬平台商品ID与名称映射"
   }
 }
