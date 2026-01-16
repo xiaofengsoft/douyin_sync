@@ -86,5 +86,15 @@
       "DY小单视频赞【秒】"
     ],
     "desc": "柠檬平台商品ID与名称映射"
+  },
+  "TELEGRAM_BOT_TOKEN": {
+    "value": "8299228546:AAGzSBBr7JrfjoOcqoCSfoElgTPZ6MSJxWQ",
+    "desc": "Telegram机器人Token"
+  },
+  "SANYECAO_GROUP_ID": {
+    "value": 7283895670
+  },
+  "NINGMENG_ID": {
+    "value": 7283895670
   }
 }

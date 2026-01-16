@@ -135,3 +135,13 @@ class Config:
 
 # 全局 CONFIG 常量：程序运行期间共享一份内存配置，写入时自动持久化
 CONFIG = Config(_load_config_dict())
+
+# 确保必要的配置项存在默认值
+if "TELEGRAM_BOT_TOKEN" not in CONFIG.keys():
+    CONFIG["TELEGRAM_BOT_TOKEN"] = ""
+if "SANYECAO_GROUP_ID" not in CONFIG.keys():
+    CONFIG["SANYECAO_GROUP_ID"] = None
+if "NINGMENG_ID" not in CONFIG.keys():
+    CONFIG["NINGMENG_ID"] = None
+if "IO_WORKERS_NUM" not in CONFIG.keys():
+    CONFIG["IO_WORKERS_NUM"] = 10
